@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora y Contador de Caracteres</title>
+    <style>
+        input[type="text"] {
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora</h1>
+    <p>Ingrese dos números y haga clic en "Sumar" para obtener el resultado:</p>
+    <input type="text" id="numero1" placeholder="Número 1">
+    <input type="text" id="numero2" placeholder="Número 2">
+    <button onclick="sumar()">Sumar</button>
+    <p>Resultado: <span id="resultado">0</span></p>
+
+    <h1>Contador de Caracteres</h1>
+    <p>Escribe algo en el campo de texto:</p>
+    <textarea id="miTextarea" rows="4" cols="50"></textarea>
+    <p>Caracteres restantes: <span id="contador">0</span></p>
+
+    <script>
+        function sumar() {
+            const numero1 = parseFloat(document.getElementById("numero1").value);
+            const numero2 = parseFloat(document.getElementById("numero2").value);
+
+            if (isNaN(numero1) || isNaN(numero2)) {
+                alert("Ingrese números válidos.");
+                return;
+            }
+
+            const suma = numero1 + numero2;
+
+            document.getElementById("resultado").textContent = suma;
+        }
+
+        function contarCaracteres() {
+            const longitudTexto = document.getElementById("miTextarea").value.length;
+            document.getElementById("contador").textContent = longitudTexto;
+        }
+
+        document.getElementById("miTextarea").addEventListener("input", contarCaracteres);
+
+        
+        contarCaracteres();
+    </script>
+</body>
+</html>
